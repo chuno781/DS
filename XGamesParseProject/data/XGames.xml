@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE xgames>
+<xgames>
+       	<!-- USUARIS -->
+	<admins>
+		<admin id="1">
+			<nom>Pierre Nodoyuna</nom>
+			<dni>88888888H</dni>
+			<num_empleat>ad0001</num_empleat>
+			<codi>admin</codi>
+			<password>admin</password>
+			<naixement>12-02-1985</naixement>
+			<pais id="4" name="Franca" />
+		</admin>
+	</admins>
+	<usuaris>
+		<usuari id="1">
+			<nom>Armando Jaleo</nom>
+			<dni>11111111A</dni>
+			<adreca>Madrigal 8, 00001, Barcelona</adreca>
+			<codi>ajaleo</codi>
+			<password>ajaleo</password>
+			<naixement>23-05-1986</naixement>
+			<pais id="1" name="Catalunya" />
+		</usuari>
+		<usuari id="2">
+			<nom>Lola Mento</nom>
+			<dni>22222222B</dni>
+			<adreca>Monumental 2, 00003, Barcelona</adreca>
+			<codi>lmento</codi>
+			<password>lmento</password>
+			<naixement>30-06-1992</naixement>
+			<pais id="2" name="Espanya" />
+		</usuari>
+	</usuaris>
+	<jutges>
+		<jutge id="1">
+			<nom>Esther Colero</nom>
+			<dni>44444444D</dni>
+			<adreca>Gran Via 222, 00007, Barcelona</adreca>
+			<codi>ecolero</codi>
+			<password>ecolero</password>
+			<pais id="1" name="Catalunya" />
+			<anyinici>2007</anyinici>
+		</jutge>
+		<jutge id="2">
+			<nom>Francisco Lorin Colorado</nom>
+			<dni>77777777G</dni>
+			<adreca>Carretera de l'Esglesia 41, 10011, Llimiana</adreca>
+			<codi>florin</codi>
+			<password>florin</password>
+			<pais id="2" name="Espanya" />
+			<anyinici>2004</anyinici>
+		</jutge>
+	</jutges>
+	<!-- ESPORTISTES -->
+	<esportistes>
+		<esportista id="1">
+			<nom>Dolores Tomacal</nom>
+			<dni>55555555E</dni>
+			<adreca>Sta Eulalia 1, 00031, San Benet del Bages</adreca>
+			<naixement>16-11-1991</naixement>
+			<pais id="1" name="Catalunya" />
+		</esportista>
+		<esportista id="2">
+			<nom>AItor Menta</nom>
+			<dni>66666666F</dni>
+			<adreca>Carretera de l'Esglesia 44, 10011, Llimiana</adreca>
+			<naixement>14-05-1989</naixement>
+			<pais id="3" name="Euskal Herria" />
+		</esportista>
+		<esportista id="3">
+			<nom>Leandro Gao</nom>
+			<dni>33333333C</dni>
+			<adreca>Uruguay 12, 00001, Barcelona</adreca>
+			<naixement>23-07-1990</naixement>
+			<pais id="2" name="Espanya" />
+		</esportista>
+                <esportista id="4">
+                        <nom>Elena Nito del Bosque</nom>
+                        <dni>12121212B</dni>
+                        <adreca>Gran Via 585, 00007, Barcelona</adreca>
+                        <naixement>12-12-1991</naixement>
+                        <pais id="2" name="Espanya" />
+                </esportista>
+	</esportistes>
+        
+            
+        <!-- PARTICIPANTS A LES PROVES -->
+ 	<participacioproves>
+		<participant id="1" esportista="1" prova="1"></participant>
+                <participant id="2" esportista="2" prova="1"></participant>
+                <participant id="3" esportista="3" prova="1"></participant>
+                <participant id="4" esportista="2" prova="2"></participant>
+                <participant id="5" esportista="4" prova="2"></participant>
+                <participant id="6" esportista="1" prova="2"></participant>
+                <participant id="7" esportista="4" prova="3"></participant>
+                <participant id="8" esportista="2" prova="3"></participant>
+                <participant id="9" esportista="3" prova="3"></participant>
+                <participant id="10" esportista="4" prova="4"></participant>
+                <participant id="11" esportista="2" prova="4"></participant>
+                <participant id="12" esportista="3" prova="4"></participant>
+                <participant id="13" esportista="1" prova="5"></participant>
+                <participant id="14" esportista="2" prova="5"></participant>
+                <participant id="15" esportista="3" prova="5"></participant>
+                <participant id="16" esportista="1" prova="6"></participant>
+                <participant id="17" esportista="2" prova="6"></participant>
+                <participant id="18" esportista="3" prova="6"></participant>
+                <participant id="19" esportista="4" prova="6"></participant>
+                <participant id="20" esportista="4" prova="7"></participant>
+                <participant id="21" esportista="3" prova="7"></participant>
+                <participant id="22" esportista="1" prova="7"></participant>                
+	</participacioproves>
+
+        <!-- ESPORTS -->
+	<esports>
+		<esport id="1">
+			<nom>Moto X</nom>
+			<disciplines>
+				<disciplina id="1" nom="Velocitat i estil">
+					<prova id="1" jutge="1" lloc="Palau Sant Jordi" data="17-05-2014" />                                                                            
+                                 </disciplina>
+				<disciplina id="2" nom="Estil lliure">
+					<prova id="2" jutge="1" lloc="Estadi Olimpic Montjuic" data="18-05-2014" />                                        
+				</disciplina>
+				<disciplina id="3" nom="Enduro X">
+					<prova id="3" jutge="1" lloc="Estadi Olimpic Montjuic" data="19-05-2014" />                                        
+				</disciplina>
+			</disciplines>
+		</esport>
+		<esport id="2">
+			<nom>BMX Freestyle</nom>
+			<disciplines>
+				<disciplina id="4" nom="Street">
+					<prova id="4" jutge="2" lloc="Esplanada Anella Olimpica" data="19-05-2014" />
+                                        
+				</disciplina>
+				<disciplina id="5" nom="Vertical">
+					<prova id="5" jutge="2" lloc="Piscina municipal de salts" data="17-05-2014" />                                       
+				</disciplina>
+			</disciplines>
+		</esport>
+		<esport id="3">
+			<nom>Skateboard</nom>
+			<disciplines>
+				<disciplina id="6" nom="Park">
+					<prova id="6" jutge="2" lloc="Esplanada Anella Olimpica" data="16-05-2014" />                                        
+				</disciplina>
+				<disciplina id="7" nom="Big Air">
+					<prova id="7" jutge="2" lloc="Palau Sant Jordi" data="18-05-2014" />                                                                               
+				</disciplina>                                
+			</disciplines>
+		</esport>
+	</esports>        
+</xgames>
