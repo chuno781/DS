@@ -15,11 +15,13 @@ public class XGamesXMLTest extends DefaultHandler {
 	 * @param args
 	 */
         Scanner sc = new Scanner(System.in);
+        
 	public static void main(String[] args) {
             
             new XGamesXMLTest("data/XGames.xml").menuPrincipal();   
                
         }
+    private XGamesDataManager dataManager;
 
 	/**
 	 * Parseja el fitxer XML i guarda les dades
@@ -27,8 +29,8 @@ public class XGamesXMLTest extends DefaultHandler {
 	 * @param nomFitxer fitxer XML a parsejar
 	 */
 	public XGamesXMLTest(String nomFitxer) {
-		XGamesDataManager dataManager = new XGamesDataManager();
-		dataManager.obtenirDades(nomFitxer);
+		this.dataManager = new XGamesDataManager();
+		this.dataManager.obtenirDades(nomFitxer);
 	}
         
      /**
@@ -195,10 +197,12 @@ public class XGamesXMLTest extends DefaultHandler {
         
         private void registrarUsuari(){
             
+            UsuariLogat usu;
+            
             escriu("\nFORMULARI REGISTRE USUARI");
             escriu("\n-------------------------\n\n");
             escriu("Intro username:\n");
-            String username = llegeixString();
+            String usuari = llegeixString();
             escriu("Intro password:\n");
             String password = llegeixString();
             escriu("Intro nom:\n");
@@ -209,14 +213,17 @@ public class XGamesXMLTest extends DefaultHandler {
             String adreca = llegeixString();
             escriu("Intro pais:\n");
             String pais = llegeixString();
-            escriu("Intro dia naixament:\n");
+            /*escriu("Intro dia naixament:\n");
             int dia = llegeixInt();
             escriu("Intro mes naixament:\n");
             int mes = llegeixInt();
             escriu("Intro any naixament:\n");
-            int any = llegeixInt();
-
+            int any = llegeixInt();*/
+            escriu("Data naixament:\n");
+            String data = llegeixString();
             
+            usu = this.dataManager.getUser(usuari);
+
             
             
             

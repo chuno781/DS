@@ -21,5 +21,10 @@ public class Data {
         this.mes = mes;
         this.any = any;
     }
+    public Data(String data){
+        this.dia = dia;
+        this.mes = mes;
+        this.any = any;
+    }
     
 }

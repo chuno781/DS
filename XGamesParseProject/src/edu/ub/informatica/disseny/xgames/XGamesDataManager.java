@@ -157,8 +157,8 @@ public class XGamesDataManager {
          * @param pais de naixement de l'usuari
 	 
 	 */
-	//public void crearUsuari(String id, String nom, String dni, String adreca, String usuari, String password, String data, String pais) {
-        public void crearUsuari(String username, String password, String nom, String dni, String adreca, String pais, Integer dia, Integer mes, Integer any) {
+	public void crearUsuari(String id, String nom, String dni, String adreca, String usuari, String password, String data, String pais) {
+        //public void crearUsuari(String username, String password, String nom, String dni, String adreca, String pais, Integer dia, Integer mes, Integer any) {
 
 		/* TODO: Creeu aqui el vostre usuari
 		 */
@@ -174,7 +174,8 @@ public class XGamesDataManager {
                 //System.out.println("Data naixement: " + data);
                 //System.out.println("Pais: " + pais);
             
-            UsuariLogat usu = new UsuariLogat(username,password,nom,dni,adreca,pais,dia,mes,any);
+            //UsuariLogat usu = new UsuariLogat(username,password,nom,dni,adreca,pais,dia,mes,any);
+            UsuariLogat usu = new UsuariLogat(id,nom,dni,adreca,usuari,password,data,pais);
             usuaris.add(usu);
 	}
         
@@ -233,4 +234,22 @@ public class XGamesDataManager {
 		//System.out.println("Pais: " + pais);
 		//System.out.println("Data de naixement: " + data);
 	}
+        
+        public UsuariLogat getUser(String usuari){
+            
+            boolean es1 = false;
+            UsuariLogat usu=null;
+            int i=0;
+            while (i<this.usuaris.size() && es1==false){
+                usu= this.usuaris.get(i);
+                es1 = usu.comprovar(usuari);
+            }
+            
+            if (es1 == false){
+               usu = null;
+            }
+            
+            return usu;
+        }  
+        
 }
