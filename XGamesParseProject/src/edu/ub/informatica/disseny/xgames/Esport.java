@@ -15,13 +15,37 @@ import java.util.ArrayList;
 public class Esport {
     
     private String nom;
-    private String descripcio;
     private ArrayList<Disciplina> disciplines;
+    private String id;
     
-    public Esport(String nom, String descripcio){
+    public Esport(String id, String nom){
+        this.id=id;
         this.nom=nom;
-        this.descripcio=descripcio;
         disciplines= new ArrayList();
     }
-    
+    public Disciplina getDisciplina(String id) {
+        boolean es1 = false;
+        Disciplina dis=null;
+        int i=0;
+        while (i<this.disciplines.size() && es1==false){
+            dis= this.disciplines.get(i);
+            es1 = dis.comprovar(id);
+            i++;
+        }
+
+        if (es1 == false){
+           dis = null;
+        }
+
+        return dis;
+    }
+
+    public void crearDisciplina(String id, String nom) {
+        disciplines.add(new Disciplina(id,nom));
+    }
+
+    public boolean comprovar(String idEsport) {
+        return idEsport.equals(id);
+        
+    }
 }

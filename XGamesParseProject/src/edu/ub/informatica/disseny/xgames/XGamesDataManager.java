@@ -1,6 +1,8 @@
 package edu.ub.informatica.disseny.xgames;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Data manager per XGames_Soft. Crea les estructures de dades necessàries 
@@ -58,6 +60,7 @@ public class XGamesDataManager {
                 //System.out.println("\n==================================================");
 		//System.out.println("Esport amb ID: " + id);
 		//System.out.println("    Nom: " + nom);
+            esports.add(new Esport(id,nom));
 	}
         
         
@@ -67,7 +70,7 @@ public class XGamesDataManager {
 	 * @param id de la disciplina
 	 * @param nom de la disciplina
 	 */	
-	public void crearDisciplina(String id, String nom) {
+	public void crearDisciplina(String id, String nom, String esport) {
 
 		/*  TODO: A partir d'aqui creeu el vostre objecte que contingui
                  * la informacio d'una nova disciplina.
@@ -75,6 +78,7 @@ public class XGamesDataManager {
                 //System.out.println("    ______________________________________________");
 		//System.out.println("    Disciplina amb ID: " + id);
 		//System.out.println("        Nom: " + nom);
+            getEsport(esport).crearDisciplina(id,nom);
 	}
         
         /**
@@ -99,6 +103,13 @@ public class XGamesDataManager {
 	}
         
 
+        public void crearProva(String id, String jutge, String lloc, String data, String disciplina, String esport) {
+            getEsport(esport).getDisciplina(disciplina).crearProva(id, this.getJutge(jutge),lloc, new Data(data) );
+         }
+        public Jutge getJutge(String idJutge){
+            return null;
+        }
+        
 	/**
 	 * Afegeix un Esportista a una prova en concret, la informacio obtinguda del fitxer XML és el identificador de l'esportista participant i el Id de la prova
 	 * 
@@ -252,5 +263,56 @@ public class XGamesDataManager {
             
             return usu;
         }  
+
+        public Esport getEsport(String idEsport) {
+            boolean es1 = false;
+            Esport esp=null;
+            int i=0;
+            while (i<this.esports.size() && es1==false){
+                esp= this.esports.get(i);
+                es1 = esp.comprovar(idEsport);
+                i++;
+            }
+            
+            if (es1 == false){
+               esp = null;
+            }
+            
+            return esp;
+        } 
+        private static void orderPaisos(ArrayList<Pais> paisos) {
+
+    Collections.sort(paisos, new Comparator() {
+
+        @Override
+        public int compare(Object o1, Object o2) {
+            Pais p1=(Pais)o1;
+            Pais p2=(Pais)o2;
+            int or1 = p1.getOr();
+            int plata1 = p1.getPlata();
+            int bronze1 = p1.getBronze();
+            int or2 = p2.getOr();
+            int plata2 = p2.getPlata();
+            int bronze2 = p2.getBronze();
+            int comp = (or1-or2);
+
+            if (comp == 0) {
+               comp=plata1-plata2;
+               if (comp==0){
+                   comp=bronze1-bronze2;
+               }
+            } 
+            return comp;
+        }
+    });
+}
+
+    void veureMedaller() {
+        orderPaisos(paisos);
+        int i=0;
         
+        while(i<paisos.size()){
+            paisos.get(i).imprMedalles();
+        }
+    }
 }

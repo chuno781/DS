@@ -92,7 +92,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     
                     break;
                 case 4: 
-                    
+                    this.dataManager.veureMedaller();
                     break;
 
                 case 5:
@@ -236,7 +236,7 @@ public class XGamesXMLTest extends DefaultHandler {
      * Imprimeix la cadena pasada per parÃ metre.
      * @param s
      */
-        private void escriu(String s){
+        public void escriu(String s){
             System.out.print(s);
         }
         
@@ -244,7 +244,7 @@ public class XGamesXMLTest extends DefaultHandler {
      * Imprimeix el nÃºmero passat per parÃ metre.
      * @param i
      */
-        private void escriu(int i){
+        public void escriu(int i){
             System.out.print(i);
         }
 
@@ -252,7 +252,7 @@ public class XGamesXMLTest extends DefaultHandler {
          * Imprimeix el nÃºmero decimal passat per parÃ metre.
          * @param f
          */
-        private void escriu(float f){
+        public void escriu(float f){
             System.out.print(f);
         }
 
@@ -260,7 +260,7 @@ public class XGamesXMLTest extends DefaultHandler {
          * Llegeix una cadena per consola.
          * @return cadena
          */
-        private String llegeixString(){
+        public String llegeixString(){
             String cadena = sc.nextLine();
             return cadena;
         }
@@ -269,7 +269,7 @@ public class XGamesXMLTest extends DefaultHandler {
          * Llegeix un nÃºmero per consola.
          * @return num
          */
-        private int llegeixInt(){
+        public int llegeixInt(){
             String cadena = "";
             do{
             cadena = sc.nextLine();
@@ -277,7 +277,7 @@ public class XGamesXMLTest extends DefaultHandler {
             int num = Integer.parseInt(cadena);
             return num;
         }
-        private double llegeixDouble(){
+        public double llegeixDouble(){
             String cadena = "";
             do{
             cadena = sc.nextLine();
@@ -286,7 +286,7 @@ public class XGamesXMLTest extends DefaultHandler {
             return num;
         }
 
-        private boolean llegeixBoolean() {
+        public boolean llegeixBoolean() {
             String cadena = "";
             do{
             escriu("escriu una n o una s siusplau\n");
@@ -301,7 +301,7 @@ public class XGamesXMLTest extends DefaultHandler {
         * @param cadena
         * @return true/false
         */
-        private boolean esInt(String cadena){
+        public boolean esInt(String cadena){
             try {
                     Integer.parseInt(cadena);
                     return true;
@@ -310,7 +310,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     return false;
             }
         }
-        private boolean esDouble(String cadena){
+        public boolean esDouble(String cadena){
             try {
                     Double.parseDouble(cadena);
                     return true;
@@ -320,7 +320,7 @@ public class XGamesXMLTest extends DefaultHandler {
             }
         }
 
-        private boolean esBoolean(String cadena) {
+        public boolean esBoolean(String cadena) {
             try {
                     return cadena.equals("s")||cadena.equals("n");
             } catch (Exception e){

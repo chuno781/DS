@@ -113,10 +113,10 @@ public class XGamesXMLParser {
                                 Element eDisciplina = (Element)disciplina;
 				id = disciplina.getAttributes().getNamedItem("id").getTextContent();
 				nom = disciplina.getAttributes().getNamedItem("nom").getTextContent();
-				dataManager.crearDisciplina(id, nom);
+				dataManager.crearDisciplina(id, nom, idEsport);
                                 
                                 // Obtenim informacio de la prova
-                                this.obtenirProva(eDisciplina, id);
+                                this.obtenirProva(eDisciplina, id, idEsport);
 			}			
 		}
 	}
@@ -127,7 +127,7 @@ public class XGamesXMLParser {
 	 * @param eDisciplina disciplina de la qual volem obtenir la prova
 	 * @param idDisciplina id de la disciplina
 	 */
-	private void obtenirProva(Element eDisciplina, String idDisciplina) {
+	private void obtenirProva(Element eDisciplina, String idDisciplina, String idEsport) {
 		NodeList proves = eDisciplina.getElementsByTagName("prova");
 		int numProves = proves.getLength();
 
@@ -142,7 +142,7 @@ public class XGamesXMLParser {
 				String lloc = prova.getAttributes().getNamedItem("lloc").getTextContent();
                                 String data = prova.getAttributes().getNamedItem("data").getTextContent();
 				
-                                dataManager.crearProva(id, jutge, lloc, data);
+                                dataManager.crearProva(id, jutge, lloc, data,  idDisciplina, idEsport);
                                                                
 			}			
 		}

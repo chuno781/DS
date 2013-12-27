@@ -22,9 +22,10 @@ public class Data {
         this.any = any;
     }
     public Data(String data){
-        this.dia = dia;
-        this.mes = mes;
-        this.any = any;
+        String [] dataSp=data.split("-");
+        this.dia = Integer.valueOf(dataSp[0]);
+        this.mes = Integer.valueOf(dataSp[1]);
+        this.any = Integer.valueOf(dataSp[2]);
     }
     
 }
