@@ -12,9 +12,9 @@ public class Jutge extends UsuariLogat {
     
     Integer numColegiatInt;
     
-    public Jutge(String nom, String username, String password, Integer numColegiatInt){
+    public Jutge(String username, String password, String nom, String dni, String adreca, String pais, int dia, int mes, int any, Integer numColegiatInt){
         
-        super(nom,username,password);
+        super(username,password,nom,dni,adreca,pais,dia,mes,any);
         this.numColegiatInt = numColegiatInt;
         
         

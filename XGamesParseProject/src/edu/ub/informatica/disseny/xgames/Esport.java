@@ -13,9 +13,11 @@ import java.util.ArrayList;
  * @author User
  */
 public class Esport {
+    
     private String nom;
     private String descripcio;
     private ArrayList<Disciplina> disciplines;
+    
     public Esport(String nom, String descripcio){
         this.nom=nom;
         this.descripcio=descripcio;

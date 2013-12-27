@@ -12,9 +12,9 @@ public class Admin extends UsuariLogat {
     
     String IDEmpleat;
     
-    public Admin(String nom, String username, String password, String IDEmpleat){
+    public Admin(String username, String password, String nom, String dni, String adreca, String pais, int dia, int mes, int any, String IDEmpleat){
         
-        super(nom,username,password);
+        super(username,password,nom,dni,adreca,pais,dia,mes,any);
         this.IDEmpleat = IDEmpleat;
         
         

@@ -8,11 +8,14 @@ import java.util.ArrayList;
  * 
  */
 public class XGamesDataManager {
+    
     private ArrayList<UsuariLogat> usuaris;
     private ArrayList<Esport> esports;
     private ArrayList<Pais> paisos;
     private UsuariLogat usuariLogat;
+    
     public XGamesDataManager(){
+        
         usuaris = new ArrayList();
         esports = new ArrayList();
         paisos = new ArrayList();
@@ -52,9 +55,9 @@ public class XGamesDataManager {
 		 *  d'un nou esport
 		 */
 
-                System.out.println("\n==================================================");
-		System.out.println("Esport amb ID: " + id);
-		System.out.println("    Nom: " + nom);
+                //System.out.println("\n==================================================");
+		//System.out.println("Esport amb ID: " + id);
+		//System.out.println("    Nom: " + nom);
 	}
         
         
@@ -69,9 +72,9 @@ public class XGamesDataManager {
 		/*  TODO: A partir d'aqui creeu el vostre objecte que contingui
                  * la informacio d'una nova disciplina.
 		 */
-                System.out.println("    ______________________________________________");
-		System.out.println("    Disciplina amb ID: " + id);
-		System.out.println("        Nom: " + nom);
+                //System.out.println("    ______________________________________________");
+		//System.out.println("    Disciplina amb ID: " + id);
+		//System.out.println("        Nom: " + nom);
 	}
         
         /**
@@ -88,11 +91,11 @@ public class XGamesDataManager {
 		 *  d'una nova prova.
 		 */
 
-                System.out.println("    . . . . . . . . . . . . . . . . . . . . . . .");
-                System.out.println("    Prova amb ID: " + id);
-                System.out.println("        Jutge ID " + jutge);
-		System.out.println("        Lloc: " + lloc);
-                System.out.println("        Data: " + data);
+                //System.out.println("    . . . . . . . . . . . . . . . . . . . . . . .");
+                //System.out.println("    Prova amb ID: " + id);
+                //System.out.println("        Jutge ID " + jutge);
+		//System.out.println("        Lloc: " + lloc);
+                //System.out.println("        Data: " + data);
 	}
         
 
@@ -109,9 +112,9 @@ public class XGamesDataManager {
                  * esportista i prova
 		 */
 
-		System.out.println("\nProva ID : " + idProva);
-		System.out.println("-----------------");
-		System.out.println("ID Esportista: " + idEsportista);
+		//System.out.println("\nProva ID : " + idProva);
+		//System.out.println("-----------------");
+		//System.out.println("ID Esportista: " + idEsportista);
                                        
         }      
          
@@ -130,15 +133,15 @@ public class XGamesDataManager {
 
 		/* TODO: Creeu aqui el vostre admin
 		 */
-                System.out.println("\n==================================================");
-		System.out.println("Admin ID: " + id);
-		System.out.println("-----------------");
-		System.out.println("Nom: " + nom);
-		System.out.println("DNI: " + dni);
-                System.out.println("Nom: " + usuari);
-		System.out.println("Password: " + password);
-                System.out.println("Data naixement: " + data);
-                System.out.println("Pais: " + pais);
+                //System.out.println("\n==================================================");
+		//System.out.println("Admin ID: " + id);
+		//System.out.println("-----------------");
+		//System.out.println("Nom: " + nom);
+		//System.out.println("DNI: " + dni);
+                //System.out.println("Nom: " + usuari);
+		//System.out.println("Password: " + password);
+                //System.out.println("Data naixement: " + data);
+                //System.out.println("Pais: " + pais);
 	}
 
 	/**
@@ -154,21 +157,25 @@ public class XGamesDataManager {
          * @param pais de naixement de l'usuari
 	 
 	 */
-	public void crearUsuari(String id, String nom, String dni, String adreca, String usuari, String password, String data, String pais) {
+	//public void crearUsuari(String id, String nom, String dni, String adreca, String usuari, String password, String data, String pais) {
+        public void crearUsuari(String username, String password, String nom, String dni, String adreca, String pais, Integer dia, Integer mes, Integer any) {
 
 		/* TODO: Creeu aqui el vostre usuari
 		 */
 
-                System.out.println("\n==========================-========================");
-                System.out.println("Usuari ID: " + id);
-		System.out.println("-----------------");
-		System.out.println("Nom: " + nom);
-		System.out.println("Nom d'usuari: " + usuari);
-		System.out.println("Dni: " + dni);
-		System.out.println("Adreça: " + adreca);
-		System.out.println("Password: " + password);
-                System.out.println("Data naixement: " + data);
-                System.out.println("Pais: " + pais);
+                //System.out.println("\n==========================-========================");
+                //System.out.println("Usuari ID: " + id);
+		//System.out.println("-----------------");
+		//System.out.println("Nom: " + nom);
+		//System.out.println("Nom d'usuari: " + usuari);
+		//System.out.println("Dni: " + dni);
+		//System.out.println("Adreça: " + adreca);
+		//System.out.println("Password: " + password);
+                //System.out.println("Data naixement: " + data);
+                //System.out.println("Pais: " + pais);
+            
+            UsuariLogat usu = new UsuariLogat(username,password,nom,dni,adreca,pais,dia,mes,any);
+            usuaris.add(usu);
 	}
         
         /**
@@ -188,16 +195,16 @@ public class XGamesDataManager {
 		/* TODO: Creeu aqui el vostre jutge
 		 */
 
-                System.out.println("\n==================================================");
-                System.out.println("Jutge ID: " + id);
-		System.out.println("-----------------");
-		System.out.println("Nom: " + nom);
-		System.out.println("Nom d'usuari: " + usuari);
-		System.out.println("Dni: " + dni);
-		System.out.println("Adreça: " + adreca);
-		System.out.println("Password: " + password);
-		System.out.println("Pais: " + pais);
-		System.out.println("Any d'inici: " + any);
+                //System.out.println("\n==================================================");
+                //System.out.println("Jutge ID: " + id);
+		//System.out.println("-----------------");
+		//System.out.println("Nom: " + nom);
+		//System.out.println("Nom d'usuari: " + usuari);
+		//System.out.println("Dni: " + dni);
+		//System.out.println("Adreça: " + adreca);
+		//System.out.println("Password: " + password);
+		//System.out.println("Pais: " + pais);
+		//System.out.println("Any d'inici: " + any);
 	}
         
         /**
@@ -217,13 +224,13 @@ public class XGamesDataManager {
 		/* TODO: Creeu aqui el vostre esportista
 		 */
 
-                System.out.println("\n==================================================");
-                System.out.println("Esportista ID: " + id);
-		System.out.println("-----------------");
-		System.out.println("Nom: " + nom);
-		System.out.println("Dni: " + dni);
-		System.out.println("Adreça: " + adreca);
-		System.out.println("Pais: " + pais);
-		System.out.println("Data de naixement: " + data);
+                //System.out.println("\n==================================================");
+                //System.out.println("Esportista ID: " + id);
+		//System.out.println("-----------------");
+		//System.out.println("Nom: " + nom);
+		//System.out.println("Dni: " + dni);
+		//System.out.println("Adreça: " + adreca);
+		//System.out.println("Pais: " + pais);
+		//System.out.println("Data de naixement: " + data);
 	}
 }
