@@ -243,6 +243,7 @@ public class XGamesDataManager {
             while (i<this.usuaris.size() && es1==false){
                 usu= this.usuaris.get(i);
                 es1 = usu.comprovar(usuari);
+                i++;
             }
             
             if (es1 == false){
