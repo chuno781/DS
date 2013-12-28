@@ -54,7 +54,7 @@ public class Esport {
         Prova prova=null;
         int i = 0;
         boolean es1 = false;
-        while(i<disciplines.size()){
+        while(i<disciplines.size()&&es1==false){
             dis=disciplines.get(i);
             prova=dis.getProva();
             es1=prova.comprova(id);

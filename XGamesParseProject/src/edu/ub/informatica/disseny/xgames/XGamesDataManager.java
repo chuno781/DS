@@ -111,7 +111,22 @@ public class XGamesDataManager {
             getEsport(esport).getDisciplina(disciplina).crearProva(id, this.getJutge(jutge),lloc, new Data(data) );
          }
         public Jutge getJutge(String idJutge){
-            return null;
+            boolean es1 = false;
+            Jutge usu=null;
+            int i=0;
+            while (i<this.usuaris.size() && es1==false){
+                if(usu instanceof Jutge){
+                    usu= (Jutge) this.usuaris.get(i);
+                    es1 = usu.comprovar(idJutge);
+                }
+                i++;
+            }
+            
+            if (es1 == false){
+               usu = null;
+            }
+            
+            return usu;
         }
         
 	/**
@@ -130,8 +145,9 @@ public class XGamesDataManager {
 		//System.out.println("\nProva ID : " + idProva);
 		//System.out.println("-----------------");
 		//System.out.println("ID Esportista: " + idEsportista);
-            getEsportista(idEsportista);
-            getProva(idProva);
+            Esportista esp=getEsportista(idEsportista);
+            Prova prova=getProva(idProva);
+            prova.addEsportista(esp);
                                        
         }      
          

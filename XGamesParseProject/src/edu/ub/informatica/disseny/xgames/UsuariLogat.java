@@ -10,14 +10,14 @@ package edu.ub.informatica.disseny.xgames;
  */
 public class UsuariLogat {
     
-    private String id;
-    private String nom;
-    private String usuari;
-    private String password;
-    private String dni;
-    private String adreca;
-    private Pais pais;
-    private Data data;
+    protected String id;
+    protected String nom;
+    protected String usuari;
+    protected String password;
+    protected String dni;
+    protected String adreca;
+    protected Pais pais;
+    protected Data data;
     private static int lastId = 0;
     
     //public UsuariLogat(String username, String password, String nom, String dni, String adreca, String pais, Integer dia, Integer mes, Integer any){
@@ -34,17 +34,8 @@ public class UsuariLogat {
         
     }
       
-    public boolean comprovar(String usuari) {
-    
-        boolean es = false;
-        String usu1;
-        
-        usu1 = getUsuari();
-        if (usu1.equals(usuari)){ 
-            es = true;
-        }
-        
-        return es;
+    public boolean comprovar(String usuari) {    
+        return this.usuari.equals(usuari);
     }
     
     public static String getNextID(){
@@ -52,10 +43,6 @@ public class UsuariLogat {
         return String.valueOf(lastId);
     }
     
-    public void crearData(String data){
-        
-        Data data1 = new Data(data);
-    }
     
     public void imprimirDades(){
         

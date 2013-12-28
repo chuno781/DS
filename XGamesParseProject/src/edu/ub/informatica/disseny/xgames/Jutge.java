@@ -12,6 +12,7 @@ public class Jutge extends UsuariLogat {
     
     Integer numColegiatInt;
     
+    private static int lastId = 0;
     public Jutge(String id, String nom, String dni, String adreca, String usuari, String password, Data data, Pais pais, Integer numColegiatInt){
         
         super(id,nom,dni,adreca,usuari,password,data,pais);
@@ -19,5 +20,15 @@ public class Jutge extends UsuariLogat {
         
         
     }
+    
+    public boolean comprovarId(String id) {    
+        return this.id.equals(id);
+    }
+    
+    public static String getNextID(){
+        Jutge.lastId++;
+        return String.valueOf(lastId);
+    }
+    
     
 }
