@@ -57,4 +57,7 @@ public class UsuariLogat {
         return password;
     }
     
+    public boolean comprovarId(String id) {    
+        return this.id.equals(id);
+    }
 }

@@ -64,5 +64,21 @@ public class Pais {
         Pais.lastId++;
         return String.valueOf(lastId);
     }
+
+    String getNom() {
+        return nom;
+    }
+
+    void addMedallaOr(Medalla m) {
+        or.add(m);
+    }
+
+    void addMedallaPlata(Medalla m) {
+        plata.add(m);
+    }
+
+    void addMedallaBronze(Medalla m) {
+        bronze.add(m);
+    }
     
 }

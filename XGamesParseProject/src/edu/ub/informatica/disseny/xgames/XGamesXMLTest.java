@@ -89,7 +89,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     
                     break;
                 case 3: 
-                    
+                    this.dataManager.classificacio();
                     break;
                 case 4: 
                     this.dataManager.veureMedaller();
@@ -178,7 +178,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     
                     break;
                 case 3: 
-                    
+                    dataManager.actualitzarResultats();
                     break;
               
                 case 4:
@@ -188,7 +188,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     escriu("Opció no vàlida.");
                     break;
             }
-            menuAdmin();
+            menuJutge();
         }
      
      /**
@@ -247,14 +247,14 @@ public class XGamesXMLTest extends DefaultHandler {
             UsuariLogat usu = dataManager.login(usuari,password);
             if(usu==null){
                 escriu("Username o password equivocat\n");
-            }else if(usu instanceof UsuariLogat){
-                menuUsuariLogat();
+            }else if(usu instanceof Jutge){
+                menuJutge();
             }
             else if(usu instanceof Admin){
                 menuAdmin();
             }
-            else if (usu instanceof Jutge){
-                menuJutge();
+            else if (usu instanceof UsuariLogat){
+                menuUsuariLogat();
             }
         }
         

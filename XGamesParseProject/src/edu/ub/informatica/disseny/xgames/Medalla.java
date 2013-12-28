@@ -11,9 +11,25 @@ package edu.ub.informatica.disseny.xgames;
  * @author User
  */
 public class Medalla {
-    String tipus;
-    Medalla(String tipus) {
+    private String tipus;
+    private Resultat resultat;
+    private Esportista esportista;
+    private Pais pais;
+    Medalla(String tipus, Resultat r) {
         this.tipus=tipus;
+        this.resultat=r;
     }
-    
+
+    void setEsportista(Esportista esportista) {
+        this.esportista=esportista;
+    }
+
+    void setPais(Pais pais) {
+        this.pais=pais;
+    }
+
+    String getTipus() {
+        return tipus;
+    }
+
 }

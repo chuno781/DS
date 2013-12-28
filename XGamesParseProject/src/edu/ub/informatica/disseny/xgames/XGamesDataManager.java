@@ -112,12 +112,14 @@ public class XGamesDataManager {
          }
         public Jutge getJutge(String idJutge){
             boolean es1 = false;
+            UsuariLogat user=null;
             Jutge usu=null;
             int i=0;
             while (i<this.usuaris.size() && es1==false){
-                if(usu instanceof Jutge){
-                    usu= (Jutge) this.usuaris.get(i);
-                    es1 = usu.comprovar(idJutge);
+                user=this.usuaris.get(i);
+                if(user instanceof Jutge){
+                    usu= (Jutge)user;
+                    es1 = usu.comprovarId(idJutge);
                 }
                 i++;
             }
@@ -249,6 +251,17 @@ public class XGamesDataManager {
 		//System.out.println("Password: " + password);
 		//System.out.println("Pais: " + pais);
 		//System.out.println("Any d'inici: " + any);
+            
+            UsuariLogat usu = getUser(usuari);
+            Pais p = getPais(pais);
+
+            if (usu==null){ 
+                if (p==null){
+                    crearPais(Pais.getNextID(),pais);
+                }
+                usu = new Jutge(id,nom,dni,adreca,usuari,password,new Data("00-00-"+any),p,0);
+                usuaris.add(usu);
+            }
 	}
         
         /**
@@ -283,6 +296,7 @@ public class XGamesDataManager {
                 if (p==null){
                     crearPais(Pais.getNextID(),pais);
                 }
+                p=getPais(pais);
                 esp= new Esportista(id,nom,dni,adreca,new Data(data),p);
                 esportistes.add(esp);
             }
@@ -434,20 +448,20 @@ public class XGamesDataManager {
     }
 
     private Esportista getEsportista(String id) {
-            boolean es1 = false;
-            Esportista esp=null;
-            int i=0;
-            while (i<this.esportistes.size() && es1==false){
-                esp= this.esportistes.get(i);
-                es1 = esp.comprovar(id);
-                i++;
-            }
-            
-            if (es1 == false){
-               esp = null;
-            }
-            
-            return esp;
+        boolean es1 = false;
+        Esportista esp=null;
+        int i=0;
+        while (i<this.esportistes.size() && es1==false){
+            esp= this.esportistes.get(i);
+            es1 = esp.comprovar(id);
+            i++;
+        }
+
+        if (es1 == false){
+           esp = null;
+        }
+
+        return esp;
     }
 
     private Prova getProva(String id) {
@@ -462,5 +476,27 @@ public class XGamesDataManager {
         }
         return prova;
         
+    }
+
+    void actualitzarResultats() {
+        if(usuariLogat instanceof Jutge){
+            Jutge j=(Jutge) usuariLogat;
+            j.getProva();
+        }
+    
+    }
+
+    void classificacio() {
+        int i=0;
+        Esport esp=null;        
+        while(i<esports.size()){
+            esp=esports.get(i);
+            esp.imprimirProves();
+            i++;
+        }
+        XGamesXMLTest.escriu("Introdueix el id de la prova a veure els resultats\n");
+        String id = XGamesXMLTest.llegeixString();
+        Prova prova=getProva(id);
+        prova.imprResultats();
     }
 }

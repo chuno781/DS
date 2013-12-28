@@ -66,4 +66,16 @@ public class Esport {
             
         return prova;
     }
+
+    void imprimirProves() {
+        Disciplina dis=null;
+        Prova prova=null;
+        int i = 0;
+        while(i<disciplines.size()){
+            dis=disciplines.get(i);
+            prova=dis.getProva();
+            prova.imprDades();
+            i++;
+        }    
+    }
 }

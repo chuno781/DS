@@ -27,5 +27,9 @@ public class Data {
         this.mes = Integer.valueOf(dataSp[1]);
         this.any = Integer.valueOf(dataSp[2]);
     }
+
+    String getData() {
+        return dia+"-"+mes+"-"+any;
+    }
     
 }

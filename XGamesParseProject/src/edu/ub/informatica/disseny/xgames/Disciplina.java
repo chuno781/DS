@@ -30,10 +30,12 @@ public class Disciplina {
         this.id = id;
         this.nom = nom;
         esportistes= new ArrayList();
+        record=new Resultat(null,0);
     }
 
     void crearProva(String id, Jutge jutge, String lloc, Data data) {
-        this.prova=new Prova(id,jutge,lloc,data);
+        this.prova=new Prova(id,jutge,lloc,data,this);
+        jutge.addProva(prova);
         
     }
 
@@ -44,6 +46,16 @@ public class Disciplina {
 
     Prova getProva() {
         return prova;
+    }
+
+    void comprovaRecord(Resultat r) {
+        if(r.getResultat()>record.getResultat()){
+            record=r;
+        }
+    }
+
+    String getNom() {
+        return nom;
     }
     
 }
