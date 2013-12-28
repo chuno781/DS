@@ -12,7 +12,7 @@ public class Admin extends UsuariLogat {
     
     String IDEmpleat;
     
-    public Admin(String id, String nom, String dni, String adreca, String usuari, String password, String data, String pais, String IDEmpleat){
+    public Admin(String id, String nom, String dni, String adreca, String usuari, String password, Data data, Pais pais, String IDEmpleat){
         
         super(id,nom,dni,adreca,usuari,password,data,pais);
         this.IDEmpleat = IDEmpleat;

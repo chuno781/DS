@@ -11,5 +11,9 @@ package edu.ub.informatica.disseny.xgames;
  * @author User
  */
 public class Medalla {
+    String tipus;
+    Medalla(String tipus) {
+        this.tipus=tipus;
+    }
     
 }

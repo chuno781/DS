@@ -14,7 +14,7 @@ public class XGamesXMLTest extends DefaultHandler {
 	 * 
 	 * @param args
 	 */
-        Scanner sc = new Scanner(System.in);
+        private static Scanner sc = new Scanner(System.in);
         
 	public static void main(String[] args) {
             
@@ -51,7 +51,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     registrarUsuari();
                     break;
                 case 2:
-                    //login();
+                    login();
                     break;
                 case 3: 
                     //veureEsportsiDisciplines();
@@ -140,7 +140,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     
                     break;
                 case 6: 
-                    
+                    dataManager.eliminarJutge();
                     break;
                 case 7: 
                     
@@ -198,6 +198,7 @@ public class XGamesXMLTest extends DefaultHandler {
         private void registrarUsuari(){
             
             UsuariLogat usu;
+            String id;
             
             escriu("\nFORMULARI REGISTRE USUARI");
             escriu("\n-------------------------\n\n");
@@ -213,30 +214,56 @@ public class XGamesXMLTest extends DefaultHandler {
             String adreca = llegeixString();
             escriu("Intro pais:\n");
             String pais = llegeixString();
-            /*escriu("Intro dia naixament:\n");
-            int dia = llegeixInt();
-            escriu("Intro mes naixament:\n");
-            int mes = llegeixInt();
-            escriu("Intro any naixament:\n");
-            int any = llegeixInt();*/
-            escriu("Data naixament:\n");
+            escriu("Data naixament (dd-mm-aaaa):\n");
             String data = llegeixString();
             
             usu = this.dataManager.getUser(usuari);
+            if (usu==null){ 
+                id = usu.getNextID();
+                this.dataManager.crearUsuari(id, nom, dni, adreca, usuari, password, data, pais);
+                escriu("Usuari creat\n");
+            }else{
+                
+                escriu("Usuari no creat, nom d'usuari ja utilitzat\n");
+            }
 
-            
-            
-            
 
         }
         
+        
+     /**
+     * Login usuari
+     */
+        
+        private void login(){
+            
+            
+            escriu("\nLOGIN USUARI");
+            escriu("\n-------------------------\n\n");
+            escriu("Intro username:\n");
+            String usuari = llegeixString();
+            escriu("Intro password:\n");
+            String password = llegeixString();
+            UsuariLogat usu = dataManager.login(usuari,password);
+            if(usu==null){
+                escriu("Username o password equivocat\n");
+            }else if(usu instanceof UsuariLogat){
+                menuUsuariLogat();
+            }
+            else if(usu instanceof Admin){
+                menuAdmin();
+            }
+            else if (usu instanceof Jutge){
+                menuJutge();
+            }
+        }
         
         
      /**
      * Imprimeix la cadena pasada per parÃ metre.
      * @param s
      */
-        public void escriu(String s){
+        public static void escriu(String s){
             System.out.print(s);
         }
         
@@ -244,7 +271,7 @@ public class XGamesXMLTest extends DefaultHandler {
      * Imprimeix el nÃºmero passat per parÃ metre.
      * @param i
      */
-        public void escriu(int i){
+        public static void escriu(int i){
             System.out.print(i);
         }
 
@@ -252,7 +279,7 @@ public class XGamesXMLTest extends DefaultHandler {
          * Imprimeix el nÃºmero decimal passat per parÃ metre.
          * @param f
          */
-        public void escriu(float f){
+        public static void escriu(float f){
             System.out.print(f);
         }
 
@@ -260,7 +287,7 @@ public class XGamesXMLTest extends DefaultHandler {
          * Llegeix una cadena per consola.
          * @return cadena
          */
-        public String llegeixString(){
+        public static String llegeixString(){
             String cadena = sc.nextLine();
             return cadena;
         }
@@ -269,7 +296,7 @@ public class XGamesXMLTest extends DefaultHandler {
          * Llegeix un nÃºmero per consola.
          * @return num
          */
-        public int llegeixInt(){
+        public static int llegeixInt(){
             String cadena = "";
             do{
             cadena = sc.nextLine();
@@ -277,7 +304,7 @@ public class XGamesXMLTest extends DefaultHandler {
             int num = Integer.parseInt(cadena);
             return num;
         }
-        public double llegeixDouble(){
+        public static double llegeixDouble(){
             String cadena = "";
             do{
             cadena = sc.nextLine();
@@ -286,7 +313,7 @@ public class XGamesXMLTest extends DefaultHandler {
             return num;
         }
 
-        public boolean llegeixBoolean() {
+        public static boolean llegeixBoolean() {
             String cadena = "";
             do{
             escriu("escriu una n o una s siusplau\n");
@@ -301,7 +328,7 @@ public class XGamesXMLTest extends DefaultHandler {
         * @param cadena
         * @return true/false
         */
-        public boolean esInt(String cadena){
+        public static boolean esInt(String cadena){
             try {
                     Integer.parseInt(cadena);
                     return true;
@@ -310,7 +337,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     return false;
             }
         }
-        public boolean esDouble(String cadena){
+        public static boolean esDouble(String cadena){
             try {
                     Double.parseDouble(cadena);
                     return true;
@@ -320,7 +347,7 @@ public class XGamesXMLTest extends DefaultHandler {
             }
         }
 
-        public boolean esBoolean(String cadena) {
+        public static boolean esBoolean(String cadena) {
             try {
                     return cadena.equals("s")||cadena.equals("n");
             } catch (Exception e){

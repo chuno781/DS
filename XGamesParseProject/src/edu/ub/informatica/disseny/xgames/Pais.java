@@ -18,14 +18,30 @@ public class Pais {
     private ArrayList<Medalla> or;
     private ArrayList<Medalla> plata;
     private ArrayList<Medalla> bronze;
+    private static int lastId = 0;
+
     public Pais(String id, String nom) {
         this.id=id;
         this.nom=nom;
         or=new ArrayList();
         plata=new ArrayList();
         bronze=new ArrayList();
+        if(nom.equals("Catalunya")){
+            or.add(new Medalla("or"));
+        }
     }
+    
+     public boolean comprovar(String pais) {
+    
+        boolean es = false;
 
+        if (nom.equals(pais)){ 
+            es = true;
+        }
+        
+        return es;
+    }
+     
     int getOr() {
         return or.size();
     }
@@ -39,8 +55,17 @@ public class Pais {
     }
 
     void imprMedalles() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String separacion="\t\t";
+        if(nom.length()>8){
+            separacion="\t";
+        }
+        XGamesXMLTest.escriu(nom+separacion+String.valueOf(getOr())+"\t"+String.valueOf(getPlata())+"\t"+String.valueOf(getBronze())+"\n");
     }
     
+    
+    public static String getNextID(){
+        Pais.lastId++;
+        return String.valueOf(lastId);
+    }
     
 }

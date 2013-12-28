@@ -1,5 +1,6 @@
 package edu.ub.informatica.disseny.xgames;
 
+import static edu.ub.informatica.disseny.xgames.XGamesXMLTest.escriu;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,12 +16,15 @@ public class XGamesDataManager {
     private ArrayList<Esport> esports;
     private ArrayList<Pais> paisos;
     private UsuariLogat usuariLogat;
+    private ArrayList<Esportista> esportistes;
+    
     
     public XGamesDataManager(){
         
         usuaris = new ArrayList();
         esports = new ArrayList();
         paisos = new ArrayList();
+        esportistes = new ArrayList();
         usuariLogat = null;
     
     }
@@ -126,6 +130,8 @@ public class XGamesDataManager {
 		//System.out.println("\nProva ID : " + idProva);
 		//System.out.println("-----------------");
 		//System.out.println("ID Esportista: " + idEsportista);
+            getEsportista(idEsportista);
+            getProva(idProva);
                                        
         }      
          
@@ -186,8 +192,18 @@ public class XGamesDataManager {
                 //System.out.println("Pais: " + pais);
             
             //UsuariLogat usu = new UsuariLogat(username,password,nom,dni,adreca,pais,dia,mes,any);
-            UsuariLogat usu = new UsuariLogat(id,nom,dni,adreca,usuari,password,data,pais);
-            usuaris.add(usu);
+            
+            UsuariLogat usu = getUser(usuari);
+            Pais p = getPais(pais);
+
+            if (usu==null){ 
+                if (p==null){
+                    crearPais(Pais.getNextID(),pais);
+                }
+                usu = new UsuariLogat(id,nom,dni,adreca,usuari,password,new Data(data),p);
+                usuaris.add(usu);
+            }
+            
 	}
         
         /**
@@ -244,6 +260,17 @@ public class XGamesDataManager {
 		//System.out.println("Adreça: " + adreca);
 		//System.out.println("Pais: " + pais);
 		//System.out.println("Data de naixement: " + data);
+            Esportista esp = getEsportista(id);
+            Pais p = getPais(pais);
+
+            if (esp==null){ 
+                if (p==null){
+                    crearPais(Pais.getNextID(),pais);
+                }
+                esp= new Esportista(id,nom,dni,adreca,new Data(data),p);
+                esportistes.add(esp);
+            }
+            
 	}
         
         public UsuariLogat getUser(String usuari){
@@ -263,6 +290,27 @@ public class XGamesDataManager {
             
             return usu;
         }  
+        
+        public Pais getPais(String pais){
+            
+            boolean es1 = false;
+            Pais p = null;
+            int i=0;
+            
+            while(i<this.paisos.size() && es1 == false){
+                
+                p = this.paisos.get(i);
+                es1 = p.comprovar(pais);
+                i++;
+            }
+            
+            if (es1 == false){
+               p = null;
+            }
+            
+            return p;
+            
+        }
 
         public Esport getEsport(String idEsport) {
             boolean es1 = false;
@@ -294,12 +342,12 @@ public class XGamesDataManager {
             int or2 = p2.getOr();
             int plata2 = p2.getPlata();
             int bronze2 = p2.getBronze();
-            int comp = (or1-or2);
+            int comp = or2-or1;
 
             if (comp == 0) {
-               comp=plata1-plata2;
+               comp=plata2-plata1;
                if (comp==0){
-                   comp=bronze1-bronze2;
+                   comp=bronze2-bronze1;
                }
             } 
             return comp;
@@ -307,12 +355,86 @@ public class XGamesDataManager {
     });
 }
 
-    void veureMedaller() {
+    public void veureMedaller() {
         orderPaisos(paisos);
         int i=0;
-        
+        XGamesXMLTest.escriu("Nom\t\tOr\tPlata\tBronze\n");
         while(i<paisos.size()){
             paisos.get(i).imprMedalles();
+            i++;
         }
+    }
+    
+    public void imprLlistaJutges(){
+        
+        UsuariLogat usu=null;
+        int i=0;
+        
+        while (i<this.usuaris.size()){
+               usu = this.usuaris.get(i);
+               
+               if (usu instanceof Jutge){  
+                   usu.imprimirDades();
+               }
+               i++;
+        }
+    }
+    
+    public void eliminarJutge(){
+        UsuariLogat usu;
+        
+        imprLlistaJutges();
+        System.out.println("Intro del username del jutge a eliminar");
+        String jutge = System.in.toString();
+        
+        usu = getUser(jutge);
+        if (usu != null){
+            
+            //DESTROY JUTGE DE TOTS ELS LLOCS ON ESTIGUI CREAT!!!
+        }
+        
+    }
+
+    public void crearPais(String id, String nom) {
+        paisos.add(new Pais(id,nom));
+    }
+
+    UsuariLogat login(String usuari, String password) {
+
+            UsuariLogat usu;
+            String pass;
+            usu = getUser(usuari);
+            
+            if (usu!=null){   
+                pass = usu.getPassword();
+                
+                if (pass.equals(password)){
+                    usuariLogat=usu;
+                }else{
+                    usu=null;
+                }
+            }
+            return usu;
+    }
+
+    private Esportista getEsportista(String id) {
+            boolean es1 = false;
+            Esportista esp=null;
+            int i=0;
+            while (i<this.esportistes.size() && es1==false){
+                esp= this.esportistes.get(i);
+                es1 = esp.comprovar(id);
+                i++;
+            }
+            
+            if (es1 == false){
+               esp = null;
+            }
+            
+            return esp;
+    }
+
+    private void getProva(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

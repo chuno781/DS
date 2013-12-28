@@ -10,16 +10,25 @@ package edu.ub.informatica.disseny.xgames;
  */
 public class Esportista {
     
-    String nom;
-    String cognoms;
-    String dni;
+    private String nom;
+    private String id;
+    private String dni;
+    private String adreca;
+    private Data data;
+    private Pais pais;
     
-    public Esportista(String id, String nom, String cognoms, String dni){
-        
+    public Esportista(String id, String nom, String dni, String adreca, Data data, Pais p) {
+        this.id=id;
         this.nom = nom;
-        this.cognoms = cognoms;
         this.dni = dni;
+        this.adreca=adreca;
+        this.data=data;
+        this.pais=p;
         
+    }
+
+    boolean comprovar(String id) {
+        return id.equals(this.id);
     }
     
 }
