@@ -22,5 +22,9 @@ public class Prova {
         this.lloc=lloc;
         this.data=data;
     }
+
+    boolean comprova(String id) {
+        return id.equals(this.id);
+    }
     
 }

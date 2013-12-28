@@ -41,5 +41,9 @@ public class Disciplina {
         return idDisciplina.equals(id);
         
     }
+
+    Prova getProva() {
+        return prova;
+    }
     
 }

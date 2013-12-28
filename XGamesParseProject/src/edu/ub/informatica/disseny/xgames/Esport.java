@@ -48,4 +48,22 @@ public class Esport {
         return idEsport.equals(id);
         
     }
+
+    public Prova getProva(String id) {
+        Disciplina dis=null;
+        Prova prova=null;
+        int i = 0;
+        boolean es1 = false;
+        while(i<disciplines.size()){
+            dis=disciplines.get(i);
+            prova=dis.getProva();
+            es1=prova.comprova(id);
+            i++;
+        }
+        if (es1 == false){
+           prova = null;
+        }
+            
+        return prova;
+    }
 }

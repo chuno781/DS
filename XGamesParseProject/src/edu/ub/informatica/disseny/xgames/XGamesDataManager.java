@@ -434,7 +434,17 @@ public class XGamesDataManager {
             return esp;
     }
 
-    private void getProva(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private Prova getProva(String id) {
+        int i=0;
+        Esport esp=null;
+        Prova prova=null;
+        
+        while(i<esports.size()&&prova==null){
+            esp=esports.get(i);
+            prova=esp.getProva(id);
+            i++;
+        }
+        return prova;
+        
     }
 }

@@ -26,9 +26,6 @@ public class Pais {
         or=new ArrayList();
         plata=new ArrayList();
         bronze=new ArrayList();
-        if(nom.equals("Catalunya")){
-            or.add(new Medalla("or"));
-        }
     }
     
      public boolean comprovar(String pais) {
