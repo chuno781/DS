@@ -58,4 +58,9 @@ public class Disciplina {
         return nom;
     }
     
+    public void imprimirNom(){
+        
+        System.out.println(nom);
+    }
+    
 }

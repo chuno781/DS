@@ -78,4 +78,29 @@ public class Esport {
             i++;
         }    
     }
+    
+    public String getNom(){
+        return nom;
+    }
+    
+     public boolean comprovarNom(String nomesport) {    
+        return this.nom.equals(nomesport);
+    }
+    
+    public void imprimirNom(String nom){
+        
+        System.out.println(nom);
+    }
+    
+    public void llistarDisciplines(){
+        
+        Disciplina dis;
+        int i=0;
+        
+            while (i<this.disciplines.size()){
+                dis = this.disciplines.get(i);
+                dis.imprimirNom();
+                i++;
+            }
+    }
 }

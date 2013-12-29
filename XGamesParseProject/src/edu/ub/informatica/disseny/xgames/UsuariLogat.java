@@ -46,7 +46,7 @@ public class UsuariLogat {
     
     public void imprimirDades(){
         
-        System.out.println("\n Username: "+ usuari + "Nom: "+ nom + ", Nacionalitat: "+ pais + ", Data: "+ data);
+        System.out.println("Username: " +usuari+ " Nom: " +nom);
     }
     
     public String getUsuari() {

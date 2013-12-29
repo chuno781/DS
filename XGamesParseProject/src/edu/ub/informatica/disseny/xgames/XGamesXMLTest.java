@@ -54,7 +54,7 @@ public class XGamesXMLTest extends DefaultHandler {
                     login();
                     break;
                 case 3: 
-                    //veureEsportsiDisciplines();
+                    dataManager.veureEsportsiDisciplines();
                     break;
                 case 4:
                     escriu("Adéu!");
@@ -236,17 +236,18 @@ public class XGamesXMLTest extends DefaultHandler {
      */
         
         private void login(){
-            
-            
+
             escriu("\nLOGIN USUARI");
             escriu("\n-------------------------\n\n");
             escriu("Intro username:\n");
             String usuari = llegeixString();
             escriu("Intro password:\n");
             String password = llegeixString();
+            
             UsuariLogat usu = dataManager.login(usuari,password);
             if(usu==null){
                 escriu("Username o password equivocat\n");
+                
             }else if(usu instanceof Jutge){
                 menuJutge();
             }

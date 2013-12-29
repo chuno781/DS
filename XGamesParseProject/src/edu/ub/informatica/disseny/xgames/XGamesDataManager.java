@@ -177,6 +177,17 @@ public class XGamesDataManager {
 		//System.out.println("Password: " + password);
                 //System.out.println("Data naixement: " + data);
                 //System.out.println("Pais: " + pais);
+            
+            UsuariLogat usu = getUser(usuari);
+            Pais p = getPais(pais);
+
+            if (usu==null){ 
+                if (p==null){
+                    crearPais(Pais.getNextID(),pais);
+                }
+                usu = new Admin(id,nom,dni,null,usuari,password,new Data(data),p);
+                usuaris.add(usu);
+            }
 	}
 
 	/**
@@ -341,6 +352,24 @@ public class XGamesDataManager {
             return p;
             
         }
+        
+         public Esport getEsportByNom(String nomesport){
+            
+            boolean es1 = false;
+            Esport esp=null;
+            int i=0;
+            while (i<this.esports.size() && es1==false){
+                esp = this.esports.get(i);
+                es1 = esp.comprovarNom(nomesport);
+                i++;
+            }
+            
+            if (es1 == false){
+               esp = null;
+            }
+            
+            return esp;
+        }  
 
         public Esport getEsport(String idEsport) {
             boolean es1 = false;
@@ -411,16 +440,17 @@ public class XGamesDataManager {
     }
     
     public void eliminarJutge(){
-        UsuariLogat usu;
         
         imprLlistaJutges();
-        System.out.println("Intro del username del jutge a eliminar");
-        String jutge = System.in.toString();
+        XGamesXMLTest.escriu("\nIntro del username del jutge a eliminar\n");
+        String jutge = XGamesXMLTest.llegeixString();
         
-        usu = getUser(jutge);
+        UsuariLogat usu = getUser(jutge);
         if (usu != null){
             
-            //DESTROY JUTGE DE TOTS ELS LLOCS ON ESTIGUI CREAT!!!
+            usuaris.remove(usu);
+            //FALTA ELIMINAR DE PROVA// Jutge j.eliminarJutge(usu);
+
         }
         
     }
@@ -498,5 +528,30 @@ public class XGamesDataManager {
         String id = XGamesXMLTest.llegeixString();
         Prova prova=getProva(id);
         prova.imprResultats();
+    }
+    
+    public void veureEsportsiDisciplines(){
+        
+        Esport esp=null;
+        int i=0;
+        
+            while (i<this.esports.size()){
+                esp = this.esports.get(i);
+                String nom = esp.getNom();
+                esp.imprimirNom(nom);
+                i++;
+            }
+        
+        XGamesXMLTest.escriu("\nIntro nom de l'esport \n");
+        String nomesport = XGamesXMLTest.llegeixString();
+        
+        esp = getEsportByNom(nomesport);
+        if (esp!=null){
+            XGamesXMLTest.escriu("\nDisciplines: \n");
+            esp.llistarDisciplines();
+        }else{
+            
+            XGamesXMLTest.escriu("\nNom esport incorrecte\n");
+        }
     }
 }

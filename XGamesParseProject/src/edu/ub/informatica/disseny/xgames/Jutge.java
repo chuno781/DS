@@ -5,6 +5,7 @@
 package edu.ub.informatica.disseny.xgames;
 
 import java.util.ArrayList;
+import javax.print.DocFlavor;
 
 /**
  *
@@ -63,6 +64,17 @@ public class Jutge extends UsuariLogat {
         }
             
         return prova;
+    }
+    
+    public void eliminarJutge(UsuariLogat usu){
+        int i=0;
+        Prova prova=null;
+        while(i<proves.size()){
+            prova=proves.get(i);
+            prova.setJutge(null);
+            i++;
+        }
+        
     }
     
     

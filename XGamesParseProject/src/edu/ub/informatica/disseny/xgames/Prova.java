@@ -92,4 +92,8 @@ public class Prova {
             i++;
         }
     }
+
+    void setJutge(Jutge j) {
+        this.jutge=j;
+    }
 }

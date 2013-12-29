@@ -10,12 +10,12 @@ package edu.ub.informatica.disseny.xgames;
  */
 public class Admin extends UsuariLogat {
     
-    String IDEmpleat;
+    //String IDEmpleat;
     
-    public Admin(String id, String nom, String dni, String adreca, String usuari, String password, Data data, Pais pais, String IDEmpleat){
+    public Admin(String id, String nom, String dni, String adreca, String usuari, String password, Data data, Pais pais){
         
-        super(id,nom,dni,adreca,usuari,password,data,pais);
-        this.IDEmpleat = IDEmpleat;
+        super(id,nom,dni,adreca, usuari,password,data,pais);
+        //this.IDEmpleat = IDEmpleat;
         
         
     }
